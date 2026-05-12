@@ -36,6 +36,16 @@ az boards work-item show --id {id} --output yaml
   - "Files to modify" -> extract file paths
   - "Scope" or "Architecture" -> extract context
   - Numbered/bulleted lists -> extract changes
+
+### Downloading Inline Images
+HTML fields may contain `<img>` tags with attachment URLs. To download them locally:
+```powershell
+$token = az account get-access-token --resource 499b84ac-1321-427f-aa17-267ca6975798 --query accessToken -o tsv
+$url = "<img src URL from HTML field>"
+Invoke-WebRequest -Uri $url -Headers @{ Authorization = "Bearer $token" } -OutFile "$env:TEMP\image.png"
+```
+- The resource GUID `499b84ac-1321-427f-aa17-267ca6975798` is the Azure DevOps resource ID
+- Use `view_image` with the saved path to inspect the image
 ## Updating Work Items
 ### Update Fields
 ```bash
