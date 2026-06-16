@@ -1,6 +1,6 @@
-# Skills
+# Agent Skills
 
-Custom agent skills for VS Code Copilot and Claude.
+Some helpful agent skills for VS Code Copilot and Claude.
 
 | Skill | Description |
 |---|---|
@@ -10,7 +10,20 @@ Custom agent skills for VS Code Copilot and Claude.
 
 ## Setup
 
+Clone this project directly into $HOME:
+
+```zsh
+cd ~
+git clone https://github.com/halllo/AgentSkills.git .agents
+```
+
 To use these skills with Claude, symlink them into `~\.claude\skills\`:
+
+```zsh
+ln -s "$HOME/.agents/skills/azure-boards"   "$HOME/.claude/skills/azure-boards"
+ln -s "$HOME/.agents/skills/azure-create-pr" "$HOME/.claude/skills/azure-create-pr"
+ln -s "$HOME/.agents/skills/azure-read-pr"  "$HOME/.claude/skills/azure-read-pr"
+```
 
 ```cmd
 mklink /J "%USERPROFILE%\.claude\skills\azure-boards" "%USERPROFILE%\.agents\skills\azure-boards"
